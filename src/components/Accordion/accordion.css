@@ -1,15 +1,59 @@
 .accordion-container {
-  @apply border border-gray-300 rounded mb-2;
+  @apply w-full max-w-md mx-auto;
 }
 
-.accordion-header {
-  @apply w-full text-left px-4 py-2 bg-gray-100 hover:bg-gray-200 font-semibold flex justify-between items-center;
+.accordion-button {
+  @apply w-full text-left p-4 font-medium bg-gray-100 hover:bg-gray-200;
 }
 
 .accordion-content {
-  @apply px-4 py-2 text-gray-700 bg-white;
+  @apply p-4;
+}
+
+.card-container {
+  @apply bg-white shadow-md rounded p-4;
+}
+
+.card-title {
+  @apply text-lg font-semibold;
+}
+
+.card-content {
+  @apply text-gray-600 mt-2;
 }
 
 .accordion-icon {
   @apply ml-2 text-lg;
+}
+
+.accordion-container {
+  @apply w-full max-w-md mx-auto;
+}
+
+.accordion-button {
+  @apply w-full flex justify-between items-center text-left p-4 font-medium bg-gray-100 hover:bg-gray-200;
+}
+
+.accordion-content {
+  @apply p-4 overflow-hidden transition-all duration-500 ease-in-out;
+}
+
+.card-container {
+  @apply bg-white shadow-md rounded p-4;
+}
+
+.card-title {
+  @apply text-lg font-semibold;
+}
+
+.card-content {
+  @apply text-gray-600 mt-2;
+}
+
+.icon {
+  @apply transform transition-transform duration-300;
+}
+
+.icon-open {
+  @apply rotate-180;
 }

@@ -1,24 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './accordion.css';
+import Card from '../Card/Card';
 
-interface AccordionProps {
+interface AccordionItem {
   title: string;
-  content: string;
+  cardTitle: string;
+  cardContent: string;
 }
 
-const Accordion: React.FC<AccordionProps> = ({ title, content }) => {
-  const [isOpen, setIsOpen] = useState(false);
+
+interface AccordionProps {
+  items: AccordionItem[];
+}
+
+const Accordion: React.FC<AccordionProps> = ({ items }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
 
   return (
     <div className="accordion-container">
-      <button
-        className="accordion-header"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {title}
-        <span className="accordion-icon">{isOpen ? '-' : '+'}</span>
-      </button>
-      {isOpen && <div className="accordion-content">{content}</div>}
+      {items.map((item, index) => (
+        <div key={index} className="border-b">
+          <button
+            className="accordion-button"
+            onClick={() => toggle(index)}
+          >
+            <span>{item.title}</span>
+            <span className={`icon ${openIndex ? 'icon-open' : ''}`}>
+              ▼
+            </span>
+          </button>
+          {openIndex === index && (
+            <div className="accordion-content">
+              <Card title={item.cardTitle} description={item.cardContent} />
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

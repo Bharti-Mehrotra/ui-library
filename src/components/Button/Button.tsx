@@ -1,32 +1,46 @@
 import './button.css';
 
+export enum ButtonType {
+  Primary = "primary",
+  Secondary = "secondary",
+  Danger = "danger"
+}
+
+
+export enum ButtonSize {
+  Small = 'small',
+  Medium = 'medium',
+  Large = 'large',
+}
+
+
 export interface ButtonProps {
-  variant?: string;
+  type?: ButtonType;
   backgroundColor?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: ButtonSize;
   label: string;
   disabled?: boolean;
   onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
-  variant = "primary",
-  size = 'medium',
+  type = ButtonType.Primary,
   backgroundColor,
+  size = ButtonSize.Medium,
   label,
   disabled = false,
   ...props
 }) => {
-  const mode = variant === "primary" ? 'storybook-button--primary' : 'storybook-button--secondary';
-  const disabledStyle = disabled ? 'opacity-50 cursor-not-allowed' : '';
+
+  const className = [
+    'btn',
+    `btn-${type}`,
+    `btn-${size}`,
+    disabled ? 'btn-disabled' : '',
+  ].join(' ');
 
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode, disabledStyle].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
+    <button disabled={disabled} className={className} {...props}>
       {label}
     </button>
   );
