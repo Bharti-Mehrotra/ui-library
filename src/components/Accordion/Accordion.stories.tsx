@@ -1,47 +1,33 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
 import Accordion from './Accordion';
+import { AccordionType, AccordionSize } from './Accordion';
 
 const meta: Meta<typeof Accordion> = {
   title: 'Components/Accordion',
   component: Accordion,
+  tags: ['autodocs'],
+  argTypes: {
+    type: {
+      control: { type: 'select' },
+      options: Object.values(AccordionType),
+    },
+    size: {
+      control: { type: 'select' },
+      options: Object.values(AccordionSize),
+    },
+  },
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Accordion>;
 
-export const Default: Story = {
-  args: {
-    items: [
-      {
-        title: "Section 1",
-        cardTitle: "Card 1",
-        cardContent: "This is the content of card 1.",
-      },
-      {
-        title: "Section 2",
-        cardTitle: "Card 2",
-        cardContent: "This is the content of card 2.",
-      },
-    ],
-  },
-};
+// const sampleItems = [
+//   { title: 'Section 1', content: 'Content for section 1' },
+//   { title: 'Section 2', content: 'Content for section 2' },
+//   { title: 'Section 3', content: 'Content for section 3' },
+// ];
 
-export const SingleItem: Story = {
-  args: {
-    items: [
-      {
-        title: "Only Section",
-        cardTitle: "Single Card",
-        cardContent: "This is the only card in the accordion.",
-      },
-    ],
-  },
-};
-
-export const MultipleItems: Story = {
-  args: {
-    items: [
+const sampleItems = [
       {
         title: "Introduction",
         cardTitle: "Intro Card",
@@ -57,6 +43,28 @@ export const MultipleItems: Story = {
         cardTitle: "Conclusion Card",
         cardContent: "This is the conclusion of the accordion.",
       },
-    ],
+    ]
+
+export const SingleMedium: Story = {
+  args: {
+    type: AccordionType.Single,
+    size: AccordionSize.Medium,
+    items: sampleItems,
+  },
+};
+
+export const MultipleLarge: Story = {
+  args: {
+    type: AccordionType.Multiple,
+    size: AccordionSize.Large,
+    items: sampleItems,
+  },
+};
+
+export const SingleSmall: Story = {
+  args: {
+    type: AccordionType.Single,
+    size: AccordionSize.Small,
+    items: sampleItems,
   },
 };

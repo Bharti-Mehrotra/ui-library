@@ -1,59 +1,42 @@
-.accordion-container {
-  @apply w-full max-w-md mx-auto;
+
+.accordion {
+  @apply w-full mx-auto;
 }
 
-.accordion-button {
-  @apply w-full text-left p-4 font-medium bg-gray-100 hover:bg-gray-200;
+.accordion-small .accordion-header {
+  @apply text-sm py-2;
 }
 
-.accordion-content {
-  @apply p-4;
+.accordion-medium .accordion-header {
+  @apply text-base py-3;
 }
 
-.card-container {
-  @apply bg-white shadow-md rounded p-4;
+.accordion-large .accordion-header {
+  @apply text-lg py-4;
 }
 
-.card-title {
-  @apply text-lg font-semibold;
+.accordion-item {
+  @apply border-b border-gray-300;
 }
 
-.card-content {
-  @apply text-gray-600 mt-2;
-}
-
-.accordion-icon {
-  @apply ml-2 text-lg;
-}
-
-.accordion-container {
-  @apply w-full max-w-md mx-auto;
-}
-
-.accordion-button {
-  @apply w-full flex justify-between items-center text-left p-4 font-medium bg-gray-100 hover:bg-gray-200;
+.accordion-header {
+  @apply w-full text-left font-semibold flex justify-between items-center transition-colors duration-300 hover:text-blue-600;
 }
 
 .accordion-content {
-  @apply p-4 overflow-hidden transition-all duration-500 ease-in-out;
-}
-
-.card-container {
-  @apply bg-white shadow-md rounded p-4;
-}
-
-.card-title {
-  @apply text-lg font-semibold;
-}
-
-.card-content {
-  @apply text-gray-600 mt-2;
+  @apply px-4 py-2 text-gray-700 transition-all duration-300 overflow-hidden;
 }
 
 .icon {
-  @apply transform transition-transform duration-300;
+  @apply text-xl transition-transform duration-300;
 }
 
 .icon-open {
   @apply rotate-180;
+}
+.accordion-card {
+   @apply bg-white shadow-md rounded-lg p-4 mt-2;
+}
+.accordion-button {
+  @apply rounded-lg bg-gray-100 px-4 py-3 transition-colors duration-300 hover:bg-gray-200 hover:text-blue-600;
 }
